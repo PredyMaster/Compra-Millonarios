@@ -22,13 +22,13 @@ const Business = ({ navigation }) => {
         <View style={globalStyles.infoContent}>
           <Text style={globalStyles.titleInfoContent}>Business</Text>
           <Text style={globalStyles.textInfoContent}>
-            - Lista de negocios disponibles para comprar.
+            - Lista de negocios disponibles para comprar
           </Text>
           <Text style={globalStyles.textInfoContent}>
-            - Detalles de cada negocio, incluyendo costos y beneficios.
+            - Detalles de cada negocio, incluyendo costos y beneficios
           </Text>
           <Text style={globalStyles.textInfoContent}>
-            - Opción para comprar, mejorar o vender negocios.
+            - Opción para comprar, mejorar o vender negocios
           </Text>
         </View>
       </ScrollView>
