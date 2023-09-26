@@ -1,106 +1,119 @@
 import { StyleSheet } from "react-native"
+import { useUser } from "../info/UserContext"
 import Constants from "expo-constants"
 import theme from "./theme"
 
-export const globalStyles = StyleSheet.create({
-  menu: {
-    backgroundColor: "purple",
-  },
+export const stylesGlobalMaster = () => {
+  const { user } = useUser()
+  const dark = user.darkMode
 
-  menuContent: {
-    justifyContent: "center",
-    alignItems: "center",
-    //flexDirection: "row",
-    gap: 5,
-  },
+  return StyleSheet.create({
+    menu: {
+      backgroundColor: "purple",
+    },
 
-  menuButton: {
-    padding: 5,
-    paddingVertical: 10,
-    width: 90,
-    margin: 1,
-    borderRadius: 2,
-    justifyContent: "center",
-    alignItems: "center",
-  },
+    menuContent: {
+      justifyContent: "center",
+      alignItems: "center",
+      //flexDirection: "row",
+      gap: 5,
+    },
 
-  menuTextButton: {
-    color: "white",
-  },
+    menuButton: {
+      padding: 5,
+      paddingVertical: 10,
+      width: 90,
+      margin: 1,
+      borderRadius: 2,
+      justifyContent: "center",
+      alignItems: "center",
+    },
 
-  contentPrueba: {
-    marginTop: theme.global.margin,
-    marginHorizontal: theme.global.margin,
-    padding: theme.global.padding,
-    backgroundColor: theme.backgrounds.Primary,
-    minHeight: "auto",
-    borderRadius: theme.global.borderRadius,
-  },
+    menuTextButton: {
+      color: "white",
+    },
 
-  infoContent: {
-    justifyContent: "center",
-    margin: theme.global.margin,
-    padding: theme.global.padding,
-    backgroundColor: theme.backgrounds.Secondary,
-    borderRadius: theme.global.borderRadius,
-  },
+    contentPrueba: {
+      marginTop: theme.global.margin,
+      padding: theme.global.padding,
+      backgroundColor: theme.backgrounds.Primary,
+      minHeight: "auto",
+      borderRadius: theme.global.borderRadius,
+    },
 
-  titleInfoContent: {
-    fontSize: 25,
-    fontWeight: "bold",
-    color: theme.textColor.Secondary,
-    marginBottom: 15,
-  },
+    infoContent: {
+      justifyContent: "center",
+      padding: theme.global.padding,
+      backgroundColor: theme.backgrounds.Secondary,
+      borderRadius: theme.global.borderRadius,
+    },
 
-  textInfoContent: {
-    fontSize: 11,
-    marginBottom: 3,
-  },
+    titleInfoContent: {
+      fontSize: 25,
+      fontWeight: "bold",
+      color: theme.textColor.Secondary,
+      marginBottom: 15,
+    },
 
-  text: {
-    fontSize: 10,
-    color: theme.textColor.Primary,
-  },
+    textInfoContent: {
+      fontSize: 11,
+      marginBottom: 3,
+    },
 
-  pink: { backgroundColor: "#ff00e6" },
-  orange: { backgroundColor: "#f24822" },
-  green: { backgroundColor: "#14ae5c" },
-  purple: { backgroundColor: "#9747ff" },
-  yellow: { backgroundColor: "#ffcd29" },
-  blue: { backgroundColor: "#0d99ff" },
+    text: {
+      fontSize: 10,
+      color: theme.textColor.Primary,
+    },
 
-  fullScreen: {
-    flex: 1,
-    marginTop: Constants.statusBarHeight,
-  },
-  topScreen: {
-    flex: 0.68,
-  },
+    pink: { backgroundColor: "#ff00e6" },
+    orange: { backgroundColor: "#f24822" },
+    green: { backgroundColor: "#14ae5c" },
+    purple: { backgroundColor: "#9747ff" },
+    yellow: { backgroundColor: "#ffcd29" },
+    blue: { backgroundColor: "#0d99ff" },
 
-  bottomScreen: {
-    flex: 0.32,
-  },
+    fullScreen: {
+      flex: 1,
+      marginTop: Constants.statusBarHeight,
+    },
+    topScreen: {
+      flex: 0.68,
+      padding: 10,
+    },
 
-  //Modal
-  modal: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.9)",
-    color: "white",
-  },
-  modalItem: {
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: "lightgray",
-    width: "90%",
-    alignItems: "center",
-  },
-  modalOptions: {
-    color: "white",
-    fontSize: 40,
-  },
-})
+    bottomScreen: {
+      flex: 0.32,
+    },
+
+    darkmodeContent: {
+      backgroundColor: "#383838",
+    },
+
+    lightmodeContent: {
+      backgroundColor: "#f5f5f5",
+    },
+
+    //Modal
+    modal: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "rgba(0, 0, 0, 0.9)",
+      color: "white",
+    },
+    modalItem: {
+      padding: 16,
+      borderBottomWidth: 1,
+      borderBottomColor: "lightgray",
+      width: "90%",
+      alignItems: "center",
+    },
+    modalOptions: {
+      color: "white",
+      fontSize: 40,
+    },
+  })
+}
 
 /* "alignContent",
   "alignItems",

@@ -2,6 +2,7 @@ const theme = {
   global: {
     margin: 10,
     padding: 20,
+    paddingMini: 10,
     borderRadius: 12,
     borderRadiusMini: 8,
   },
@@ -29,6 +30,16 @@ const theme = {
   fontWeights: {
     normal: "400",
     bold: "700",
+  },
+
+  darkMode: {
+    colorPrimary: "black",
+    colorSecundary: "grey",
+  },
+
+  lightMode: {
+    colorPrimary: "white",
+    colorSecundary: "lightgray",
   },
 }
 

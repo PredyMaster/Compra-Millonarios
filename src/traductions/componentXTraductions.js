@@ -1,6 +1,4 @@
-import { language } from "../info/infoConfigUser"
-
-const traductions = (text) => {
+const traductions = (text, language) => {
   return traducciones[text][language]
 }
 

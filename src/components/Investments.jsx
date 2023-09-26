@@ -1,19 +1,29 @@
 import { View, Text, ScrollView } from "react-native"
-import { globalStyles } from "../styles/globalStyle"
+import { stylesGlobalMaster } from "../styles/globalStyle"
 import { styles } from "../styles/componentXStyle"
 import globalTraductions from "../traductions/globalTraductions"
 import traductions from "../traductions/componentXTraductions"
 import { callApi } from "../functions/globalFunctions"
-import { language } from "../info/infoConfigUser"
-import { infoUser } from "../info/infoUser"
 import { AdFooter } from "../ads/adSection"
 import Menu from "./Menu"
 
 import FooterMenu from "../components/FooterMenu"
 
+import { useUser } from "../info/UserContext"
+
 const Investments = ({ navigation }) => {
+  const { user, updateUser } = useUser()
+  const globalStyles = stylesGlobalMaster()
+
   return (
-    <View style={globalStyles.fullScreen}>
+    <View
+      style={[
+        globalStyles.fullScreen,
+        user.darkMode
+          ? globalStyles.darkmodeContent
+          : globalStyles.lightmodeContent,
+      ]}
+    >
       <ScrollView style={globalStyles.topScreen}>
         <View style={globalStyles.contentPrueba}>
           <Text>Submenu componente</Text>

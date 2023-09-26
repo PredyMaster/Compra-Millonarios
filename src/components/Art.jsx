@@ -2,9 +2,14 @@ import React from "react"
 import { View, ScrollView, Text, Button } from "react-native"
 import { scheduleNotificationAsync } from "expo-notifications"
 import FooterMenu from "../components/FooterMenu"
-import { globalStyles } from "../styles/globalStyle"
+import { stylesGlobalMaster } from "../styles/globalStyle"
+
+import { useUser } from "../info/UserContext"
 
 const Art = ({ navigation }) => {
+  const { user, updateUser } = useUser()
+  const globalStyles = stylesGlobalMaster()
+
   const enviarNotificacionPush = async () => {
     // Obtener la fecha actual
     const fechaActual = new Date()
@@ -28,7 +33,14 @@ const Art = ({ navigation }) => {
   }
 
   return (
-    <View style={globalStyles.fullScreen}>
+    <View
+      style={[
+        globalStyles.fullScreen,
+        user.darkMode
+          ? globalStyles.darkmodeContent
+          : globalStyles.lightmodeContent,
+      ]}
+    >
       <ScrollView style={globalStyles.topScreen}>
         <View style={globalStyles.contentPrueba}>
           <Text>Submenu componente</Text>

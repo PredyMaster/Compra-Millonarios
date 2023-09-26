@@ -3,7 +3,6 @@ import theme from "../styles/theme"
 import Publi from "../../assets/images/Publi.png"
 
 export const AdFooter = () => {
-  console.log(Publi)
   return (
     <View style={styles.adFooterContent}>
       <Image

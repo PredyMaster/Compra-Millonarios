@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#b1eff8",
     alignItems: "center",
     padding: 0,
-    height: 90,
+    height: 110,
     marginVertical: 4,
     justifyContent: "space-around",
   },

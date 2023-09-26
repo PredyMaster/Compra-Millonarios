@@ -1,23 +1,95 @@
-import { View, Text, ScrollView } from "react-native"
-import { globalStyles } from "../styles/globalStyle"
-import { styles } from "../styles/componentXStyle"
+import { View, Text, Image, ScrollView } from "react-native"
+import { stylesGlobalMaster } from "../styles/globalStyle"
+import { stylesProfile } from "../styles/componentProfileStyle"
 import globalTraductions from "../traductions/globalTraductions"
 import traductions from "../traductions/componentXTraductions"
 import { callApi } from "../functions/globalFunctions"
-import { language } from "../info/infoConfigUser"
-import { infoUser } from "../info/infoUser"
+
+import { useUser } from "../info/UserContext"
 
 import FooterMenu from "../components/FooterMenu"
 
 const Profile = ({ navigation }) => {
+  const { user, updateUser } = useUser()
+  const globalStyles = stylesGlobalMaster()
+  const styles = stylesProfile()
+
   return (
-    <View style={globalStyles.fullScreen}>
+    <View
+      style={[
+        globalStyles.fullScreen,
+        user.darkMode
+          ? globalStyles.darkmodeContent
+          : globalStyles.lightmodeContent,
+      ]}
+    >
       <ScrollView style={globalStyles.topScreen}>
         <View style={globalStyles.contentPrueba}>
           <Text>Submenu componente</Text>
         </View>
 
-        <View style={globalStyles.infoContent}>
+        <View style={styles.infoUserContent}>
+          <Image source={{ uri: user.avatar }} style={styles.avatar} />
+          {/* Porque es un recurso externo */}
+          {/* <Image source={require(user.avatar)} style={styles.avatar} /> Cuando la imagen está en local */}
+          <View style={styles.infoUserTextContent}>
+            <Text style={styles.infoUserTextName}>{user.name}</Text>
+            <Text style={styles.infoUserTextValue}>
+              Valor usuario{" "}
+              <Text style={styles.boldText}>{user.userValue}</Text>
+            </Text>
+            <Text style={styles.infoUserTextValue}>
+              Monedas <Text style={styles.boldText}>{user.money}</Text>
+            </Text>
+            <Text style={styles.infoUserTextValue}>
+              Diamantes <Text style={styles.boldText}>{user.diamonds}</Text>
+            </Text>
+          </View>
+        </View>
+
+        <View style={styles.sectionContent}>
+          <View>
+            <Text>Si te tienes en posesion o te han comprado</Text>
+          </View>
+
+          <View>
+            <Text>Lista de usuarios que has comprado</Text>
+          </View>
+        </View>
+
+        <View style={styles.sectionContent}>
+          <View>
+            <Text>Cantidad de materiales que tienes oro/plata/bronce</Text>
+          </View>
+
+          <View>
+            <Text>Los negocios que te has comprado</Text>
+          </View>
+
+          <View>
+            <Text>Las criptomonedas invertidas</Text>
+          </View>
+        </View>
+
+        <View style={styles.sectionContent}>
+          <View>
+            <Text>
+              Numero de hangares, garajes, puertos // coches, aviones, barcos
+            </Text>
+            <Text>Numero de casas, edificios, islas, monumentos</Text>
+            <Text>Numero de cuadros, museos, NFTS</Text>
+          </View>
+        </View>
+
+        <View style={styles.sectionContent}>
+          <View>
+            <Text>
+              Links para compartir tu perfil del juego en redes sociales
+            </Text>
+          </View>
+        </View>
+
+        {/*         <View style={globalStyles.infoContent}>
           <Text style={globalStyles.titleInfoContent}>Profile</Text>
           <Text style={globalStyles.textInfoContent}>
             - Tu foto y tu nombre (Hay que controlar que la peña no suba fotos
@@ -65,7 +137,7 @@ const Profile = ({ navigation }) => {
           <Text style={globalStyles.textInfoContent}>
             - En tu cuenta tambien salen tus hangares, garajes, puertos etc
           </Text>
-        </View>
+        </View> */}
       </ScrollView>
 
       <FooterMenu {...navigation} />
