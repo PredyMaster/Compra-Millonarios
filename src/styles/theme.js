@@ -7,18 +7,20 @@ const theme = {
     borderRadiusMini: 8,
   },
   colors: {
-    textPrimary: "#24292e",
-    textSecondary: "#09f",
+    textPrimary: "#24292e", //Gris oscuro
+    textSecondary: "#09f", //Azul colorido
+    textTertiary: "ghostwhite", //Gris clarito azulado
+    textQuaternary: "green",
     primary: "#0366d6",
   },
   textColor: {
-    Primary: "#363636",
-    Secondary: "#0b0b0b",
-    red: "#da0000",
+    Primary: "#363636", //Gris oscuro
+    Secondary: "#0b0b0b", //Gris MUY oscuro
+    red: "#da0000", //Rojo
   },
   backgrounds: {
-    Primary: "#a7f58d",
-    Secondary: "#8de8f5",
+    Primary: "#a7f58d", //Verde clarito
+    Secondary: "#8de8f5", //Azul clarito
   },
   fontSizes: {
     body: 14,

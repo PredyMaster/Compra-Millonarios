@@ -1,28 +1,28 @@
 import { StyleSheet } from "react-native"
 import { useUser } from "../info/UserContext"
 import theme from "./theme"
+import Constants from "expo-constants"
 
 export const stylesMoney = () => {
   const { user } = useUser()
   const dark = user.darkMode
 
   return StyleSheet.create({
-    textoComponent: {
-      padding: 5,
-      width: "auto",
-      justifyContent: "center",
-      color: user.darkmode ? "white" : "green",
+    fullScreen: {
+      flex: 1,
+      marginTop: Constants.statusBarHeight,
+    },
+    topScreen: {
+      flex: 1,
     },
 
-    cardFake: {
-      width: "70%",
-      height: 190,
-    },
-
-    cardContainer: {
+    sectionMoneyContainer: {
       width: "100%",
       alignItems: "center",
-      marginVertical: 14,
+      paddingVertical: 30,
+      backgroundColor: "#1a1a1a",
+      borderBottomLeftRadius: theme.global.borderRadius,
+      borderBottomRightRadius: theme.global.borderRadius,
     },
 
     card: {
@@ -39,7 +39,6 @@ export const stylesMoney = () => {
       borderWidth: 4,
       borderColor: "#005095",
       borderRadius: 9,
-      margin: 4,
     },
 
     imageBackground: {
@@ -77,15 +76,16 @@ export const stylesMoney = () => {
       textAlign: "center",
       alignItems: "center",
       alignContent: "center",
-      marginRight: 20,
     },
 
     statusContainerWrapper: {
-      justifyContent: "flex-end",
+      justifyContent: "space-between",
+      flexDirection: "row",
       display: "flex",
       right: 0,
-      paddingVertical: 14,
-      width: "fit-content",
+      paddingVertical: 6,
+      paddingHorizontal: 18,
+      width: "100%",
     },
 
     logoWrapper: {
@@ -103,7 +103,7 @@ export const stylesMoney = () => {
     moneyContainter: {
       paddingHorizontal: 25,
       width: "100%",
-      justifyContent: "space-between",
+      justifyContent: "flex-end",
       flexDirection: "row",
       bottom: 2,
       alignItems: "center",
@@ -132,8 +132,73 @@ export const stylesMoney = () => {
       color: "greenyellow",
     },
 
+    progresBarContainer: {
+      marginTop: 14,
+      backgroundColor: "#034c8d",
+      width: 300,
+      borderRadius: theme.global.borderRadius,
+      padding: 20,
+    },
+
+    valueClickContainer: {
+      alignItems: "center",
+    },
+
+    valueClick: {
+      fontSize: 18,
+      fontWeight: "bold",
+      color: "white",
+    },
+
+    levelsContainer: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+    },
+
+    levels: {
+      fontSize: 10,
+      paddingHorizontal: 8,
+      color: theme.colors.textTertiary,
+    },
+
     ProgressBar: {
       width: 20,
+      height: 10,
+    },
+
+    adWrapper: {
+      width: "100%",
+      alignItems: "center",
+    },
+
+    clickSection: {
+      flex: 1,
+      backgroundColor: "ghostwhite",
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: -50,
+
+      zIndex: -1,
+    },
+
+    clickIcon: {
+      width: 60,
+      height: 60,
+      marginVertical: "100%",
+    },
+
+    adSection: {
+      backgroundColor: "#387fbc",
+      width: "50%",
+      paddingHorizontal: 20,
+      paddingVertical: 10,
+      borderBottomLeftRadius: theme.global.borderRadius,
+      borderBottomRightRadius: theme.global.borderRadius,
+      alignItems: "center",
+      borderWidth: 2,
+      borderTopWidth: 0,
+      borderColor: "white",
     },
 
     relleno: {
@@ -145,32 +210,5 @@ export const stylesMoney = () => {
       marginTop: 100,
       height: 100,
     },
-
-    /*     ProgressBarMoney: {
-      //color: dark ? theme.lightMode.colorPrimary : theme.darkMode.colorPrimary,
-      fontSize: 40,
-      justifyContent: "center",
-    },
- */
-    /*     ProgressBarContent: {
-      justifyContent: "center",
-      marginVertical: 40,
-      backgroundColor: "white",
-      display: "flex",
-      alignContent: "center",
-      textAlign: "center",
-      alignItems: "center",
-    },
-
-    ProgressBar: {
-      color: dark ? theme.darkMode.colorPrimary : theme.lightMode.colorPrimary,
-      marginBottom: 60,
-    },
-
-    ProgressBarButton: {
-      paddingVertical: 30,
-      marginTop: 50,
-      paddingVertical: 30,
-    }, */
   })
 }
