@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react"
+import { getProfile } from "../functions/globalFunctions"
 
 // Creamos un contexto para el usuario
 const UserContext = createContext()
@@ -11,15 +12,11 @@ export function useUser() {
 // Proveedor del contexto que contendrá los datos del usuario
 export function UserProvider({ children }) {
   // Aquí puedes inicializar los valores iniciales del usuario
-  const [user, setUser] = useState({
-    name: "Predy",
-    userValue: 1000,
-    money: 0,
-    diamonds: 20,
-    avatar: "https://www.predy.es/static/media/Predy.47596d8b.jpg",
-    language: "ESP",
-    darkMode: 1,
-  })
+
+  const userID = "0000-0001"
+  const [user, setUser] = useState(getProfile(userID))
+
+  console.log("CARGO EL USER CONTEXT")
 
   // Función para actualizar los datos del usuario
   function updateUser(newUser) {

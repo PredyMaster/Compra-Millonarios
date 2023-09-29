@@ -116,6 +116,32 @@ export const stylesGlobalMaster = () => {
       color: "white",
       fontSize: 40,
     },
+
+    labelSearch: {
+      textAlign: "center",
+      fontSize: 20,
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+      marginTop: 40,
+    },
+
+    inputSearch: {
+      display: "flex",
+      backgroundColor: dark
+        ? theme.darkMode.textColorSecundary
+        : theme.lightMode.textColorSecundary,
+      borderWidth: 2,
+      borderColor: "red",
+      alignSelf: "center",
+      width: "90%",
+      fontSize: 20,
+      marginTop: 20,
+      padding: 10,
+      paddingHorizontal: 20,
+      borderRadius: theme.global.borderRadiusMini,
+      fontWeight: "bold",
+    },
   })
 }
 

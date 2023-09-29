@@ -5,6 +5,7 @@ import { useUser } from "../info/UserContext"
 export const stylesProfile = () => {
   const { user } = useUser()
   const dark = user.darkMode
+  const owner = user.ownerColor
 
   return StyleSheet.create({
     boldText: {
@@ -13,17 +14,32 @@ export const stylesProfile = () => {
 
     infoUserContent: {
       padding: theme.global.padding,
+      paddingBottom: 10,
       flexDirection: "row",
     },
 
     avatar: {
       width: 100,
       height: 100,
-      borderWidth: 2,
-      borderColor: dark
-        ? theme.lightMode.colorPrimary
-        : theme.darkMode.colorPrimary,
+      borderWidth: 4,
+      backgroundColor: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
       borderRadius: theme.global.borderRadiusMini,
+      /* borderColor:
+        owner === 0
+          ? dark
+            ? theme.darkMode.green
+            : theme.lightMode.green
+          : owner === 1
+          ? dark
+            ? theme.darkMode.yellow
+            : theme.lightMode.yellow
+          : owner === 2
+          ? dark
+            ? theme.darkMode.red
+            : theme.lightMode.red
+          : "green", */
     },
 
     infoUserTextContent: {
@@ -33,14 +49,48 @@ export const stylesProfile = () => {
     },
 
     infoUserTextName: {
-      color: dark ? theme.lightMode.colorPrimary : theme.darkMode.colorPrimary,
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
       fontWeight: "bold",
       fontSize: 22,
     },
 
     infoUserTextValue: {
-      color: dark ? theme.lightMode.colorPrimary : theme.darkMode.colorPrimary,
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
       fontSize: 14,
+    },
+
+    owner: {
+      textAlign: "center",
+      width: "auto",
+      alignSelf: "center",
+      backgroundColor: "grey",
+      borderRadius: theme.global.borderRadiusMegaMini,
+      paddingVertical: 4,
+      paddingHorizontal: 10,
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+    },
+
+    button: {
+      marginTop: 10,
+      width: "60%",
+      alignSelf: "center",
+      backgroundColor: "green",
+      borderRadius: theme.global.borderRadiusMegaMini,
+      paddingVertical: 14,
+      paddingHorizontal: 10,
+    },
+
+    buttonText: {
+      textAlign: "center",
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
     },
 
     sectionContent: {

@@ -5,6 +5,7 @@ const theme = {
     paddingMini: 10,
     borderRadius: 12,
     borderRadiusMini: 8,
+    borderRadiusMegaMini: 4,
   },
   colors: {
     textPrimary: "#24292e", //Gris oscuro
@@ -35,13 +36,21 @@ const theme = {
   },
 
   darkMode: {
-    colorPrimary: "black",
-    colorSecundary: "grey",
+    textColorPrimary: "white",
+    textColorSecundary: "ghostwhite", //Gris clarito azulado
+    colorBackground: "#24292e", //Gris oscuro
+    green: "green",
+    red: "red",
+    yellow: "yellow",
   },
 
   lightMode: {
-    colorPrimary: "white",
-    colorSecundary: "lightgray",
+    textColorPrimary: "#24292e", //Gris oscuro
+    textColorSecundary: "black", // Negro
+    colorBackground: "#lightgray", //Gris claito
+    green: "green",
+    red: "red",
+    yellow: "yellow",
   },
 }
 
