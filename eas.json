@@ -5,6 +5,11 @@
   },
 
   "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+
     "production": {
       "env": {
         "EXPO_PUBLIC_API_URL": "https://api.production.com"
@@ -25,11 +30,6 @@
         "buildType": "apk"
       },
       "releaseChannel": "preview",
-      "distribution": "internal"
-    },
-
-    "development": {
-      "developmentClient": true,
       "distribution": "internal"
     }
   }
