@@ -4,13 +4,16 @@ import globalTraductions from "../traductions/globalTraductions"
 import { useUser } from "../info/UserContext"
 
 const Item = ({ section, name, colorSection, navigation, globalStyles }) => (
-  <TouchableOpacity
-    title={name}
-    onPress={() => navigation.navigate(section, { name: "Predy" })}
-    style={[globalStyles.menuButton, globalStyles[colorSection]]}
-  >
-    <Text style={globalStyles.menuTextButton}>{name}</Text>
-  </TouchableOpacity>
+  console.log(section, " section"),
+  (
+    <TouchableOpacity
+      title={name}
+      onPress={() => navigation.navigate(section, { name: "Predy" })}
+      style={[globalStyles.menuButton, globalStyles[colorSection]]}
+    >
+      <Text style={globalStyles.menuTextButton}>{name}</Text>
+    </TouchableOpacity>
+  )
 )
 
 const Menu = (navigation) => {

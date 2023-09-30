@@ -26,3 +26,12 @@ export const searchUsers = (searchUser) => {
 
   if (matchingUsers != "undefined") return matchingUsers
 }
+
+export const getMyUsers = (miUserID) => {
+  const matchingUsers = users.filter((user) => {
+    const regex = new RegExp(miUserID, "i") // 'i' para hacer la búsqueda insensible a mayúsculas y minúsculas
+    return regex.test(user.owner)
+  })
+
+  if (matchingUsers != "undefined") return matchingUsers
+}

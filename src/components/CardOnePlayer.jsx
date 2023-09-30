@@ -3,6 +3,7 @@ import { View, Image, Text, Pressable } from "react-native"
 import { stylesProfile } from "../styles/componentProfileStyle"
 
 export const CardOnePlayer = ({ usersFound }) => {
+  //console.log(usersFound, " usersFound")
   const CardComponent = (usersFound) => {
     const styles = stylesProfile()
     if (usersFound != undefined) {

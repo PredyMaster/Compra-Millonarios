@@ -48,9 +48,7 @@ export const stylesMoney = () => {
       alignItems: "center",
       borderRadius: theme.global.borderRadiusMini,
       overflow: "hidden",
-      borderColor: dark
-        ? theme.lightMode.textColorPrimary
-        : theme.darkMode.textColorPrimary,
+      borderColor: theme.white,
       borderWidth: 1,
     },
 
@@ -66,11 +64,11 @@ export const stylesMoney = () => {
       letterSpacing: 2,
       borderWidth: 1,
       borderColor: dark
-        ? theme.lightMode.textColorPrimary
-        : theme.darkMode.textColorPrimary,
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
       color: dark
-        ? theme.lightMode.textColorPrimary
-        : theme.darkMode.textColorPrimary,
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
       borderRadius: 20,
       padding: 14,
       paddingVertical: 3,
@@ -113,16 +111,16 @@ export const stylesMoney = () => {
 
     bank: {
       color: dark
-        ? theme.lightMode.textColorPrimary
-        : theme.darkMode.textColorPrimary,
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
     },
 
     money: {
       fontWeight: "bold",
       fontSize: 25,
       color: dark
-        ? theme.lightMode.textColorPrimary
-        : theme.darkMode.textColorPrimary,
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
     },
 
     multiplierContainter: {

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Compro Millonarios",
-    "slug": "compro-millonarios",
+    "name": "Compra Millonarios",
+    "slug": "Compra-Millonarios",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,21 +14,21 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.predymaster.ComproMillonarios"
+      "bundleIdentifier": "com.predymaster.CompraMillonarios"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.predymaster.ComproMillonarios"
+      "package": "com.predymaster.CompraMillonarios"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "compro-millonarios"
+        "projectId": "compra-millonarios"
       }
     }
   }

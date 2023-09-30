@@ -1,18 +1,27 @@
+import React, { useEffect, useState } from "react"
 import { View, Text, Image, ScrollView } from "react-native"
 import { stylesGlobalMaster } from "../styles/globalStyle"
 import { stylesProfile } from "../styles/componentProfileStyle"
 import globalTraductions from "../traductions/globalTraductions"
 import traductions from "../traductions/componentXTraductions"
 import { callApi } from "../functions/globalFunctions"
+import { getMyUsers } from "../functions/globalFunctions"
 
 import { useUser } from "../info/UserContext"
 
+import UserGallery from "./UserGallery"
 import FooterMenu from "../components/FooterMenu"
 
 const Profile = ({ navigation }) => {
   const { user, updateUser } = useUser()
+  const [myUsers, setMyUsers] = useState([])
   const globalStyles = stylesGlobalMaster()
   const styles = stylesProfile()
+
+  useEffect(() => {
+    const myUsersSearch = getMyUsers(user.id)
+    setMyUsers(myUsersSearch)
+  }, [])
 
   return (
     <View
@@ -30,8 +39,6 @@ const Profile = ({ navigation }) => {
 
         <View style={styles.infoUserContent}>
           <Image source={{ uri: user.avatar }} style={styles.avatar} />
-          {/* Porque es un recurso externo */}
-          {/* <Image source={require(user.avatar)} style={styles.avatar} /> Cuando la imagen está en local */}
           <View style={styles.infoUserTextContent}>
             <Text style={styles.infoUserTextName}>{user.name}</Text>
             <Text style={styles.infoUserTextValue}>
@@ -47,7 +54,29 @@ const Profile = ({ navigation }) => {
           </View>
         </View>
 
-        <View style={styles.sectionContent}>
+        {/*         <View>
+          <Text>Personas que tengo compradas:</Text>
+          {myUsers &&
+            myUsers.map((item) => {
+              console.log(item, " el item")
+              return (
+                <Text key={item.id} style={styles.infoUserTextValue}>
+                  {item.name}
+                </Text>
+              )
+            })}
+          <Text></Text>
+        </View> */}
+
+        <View style={stylesProfile.UserGalleryComponent}>
+          <Text style={styles.infoUserTextValue}>
+            Personas que tengo compradas:
+          </Text>
+          <UserGallery myUsers={myUsers} navigation={navigation} />
+          {/* {myUsers.length && <UserGallery myUsers={myUsers} />} */}
+        </View>
+
+        {/*         <View style={styles.sectionContent}>
           <View>
             <Text>Si te tienes en posesion o te han comprado</Text>
           </View>
@@ -87,7 +116,7 @@ const Profile = ({ navigation }) => {
               Links para compartir tu perfil del juego en redes sociales
             </Text>
           </View>
-        </View>
+        </View> */}
 
         {/*         <View style={globalStyles.infoContent}>
           <Text style={globalStyles.titleInfoContent}>Profile</Text>

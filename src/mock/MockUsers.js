@@ -11,7 +11,7 @@ export const users = [
     darkMode: 1,
     owner: "0000-0001",
     ownerColor: 1,
-    ownerName: "Vilori",
+    ownerName: "Predy",
   },
   {
     id: "0000-0002",
@@ -39,7 +39,7 @@ export const users = [
     darkMode: 1,
     owner: "0000-0001",
     ownerColor: 0,
-    ownerName: "Vilori",
+    ownerName: "Predy",
   },
   {
     id: "0000-0004",
@@ -81,7 +81,7 @@ export const users = [
     darkMode: 0,
     owner: "0000-0001",
     ownerColor: 0,
-    ownerName: "Sergete",
+    ownerName: "Predy",
   },
 
   {
@@ -94,9 +94,9 @@ export const users = [
       "https://mario.nintendo.com/static/75d6ad23ee9360e4dfbee56c8c882e5e/13fb2/waluigi-unstack-closed.png",
     language: "ESP",
     darkMode: 0,
-    owner: "0000-0002",
+    owner: "0000-0001",
     ownerColor: 0,
-    ownerName: "Peke",
+    ownerName: "Predy",
   },
 
   {
@@ -109,8 +109,38 @@ export const users = [
       "https://mario.nintendo.com/static/1aa760ce66266be8f8c1b0e7a4005d78/13fb2/wario-unstack-closed.png",
     language: "ESP",
     darkMode: 0,
-    owner: "0000-0002",
+    owner: "0000-0001",
     ownerColor: 0,
-    ownerName: "Peke",
+    ownerName: "Predy",
+  },
+
+  {
+    id: "0000-0009",
+    name: "Huguito",
+    userValue: 1000,
+    money: 0,
+    diamonds: 0,
+    avatar:
+      "https://mario.nintendo.com/static/4c824a88f2cd388c923ee0aeb1777cea/13fb2/boo-unstack-closed.png",
+    language: "CAT",
+    darkMode: 1,
+    owner: "0000-0001",
+    ownerColor: 0,
+    ownerName: "Predy",
+  },
+
+  {
+    id: "0000-0010",
+    name: "Sandrita",
+    userValue: 1000,
+    money: 0,
+    diamonds: 0,
+    avatar:
+      "https://mario.nintendo.com/static/adc750a84fd82295815837189fc509ba/13fb2/rosalina-unstack-closed.png",
+    language: "ENG",
+    darkMode: 0,
+    owner: "0000-0001",
+    ownerColor: 0,
+    ownerName: "Predy",
   },
 ]

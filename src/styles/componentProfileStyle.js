@@ -97,7 +97,15 @@ export const stylesProfile = () => {
       padding: theme.global.padding,
       borderRadius: theme.global.borderRadiusMini,
       backgroundColor: "yellow",
+      marginVertical: 10,
+    },
+
+    UserGalleryComponent: {
+      flexDirection: "row",
+      alignItems: "center",
       marginBottom: 10,
+      backgroundColor: "red",
+      height: 80,
     },
   })
 }

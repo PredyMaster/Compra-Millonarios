@@ -65,6 +65,7 @@ const Money = ({ navigation }) => {
     if (position === -1) position = moneyRank.length
 
     setEconomicStatus(Status[position])
+    updateUser({ ...user, money: numClicks })
   }, [numClicks])
 
   const globalStyles = stylesGlobalMaster()

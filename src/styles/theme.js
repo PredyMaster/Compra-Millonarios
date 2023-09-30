@@ -34,6 +34,9 @@ const theme = {
     normal: "400",
     bold: "700",
   },
+  white: {
+    color: "white",
+  },
 
   darkMode: {
     textColorPrimary: "white",
