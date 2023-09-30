@@ -1,46 +1,35 @@
 {
   "expo": {
-    "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#ffffff",
-        "foregroundImage": "./assets/adaptive-icon.png"
-      },
-      "package": "com.predymaster.Bender",
-      "userInterfaceStyle": "automatic"
+    "name": "Compro Millonarios",
+    "slug": "compro-millonarios",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": ["**/*"],
-    "extra": {
-      "eas": {
-        "projectId": "e404cf4b-aa87-4193-9b6f-5b2be2abe225"
-      }
-    },
-    "icon": "./assets/icon.png",
     "ios": {
-      "adaptiveIcon": {
-        "backgroundColor": "#ffffff",
-        "foregroundImage": "./assets/adaptive-icon.png"
-      },
-      "bundleIdentifier": "com.predymaster.Bender",
-      "package": "com.predymaster.Bender",
       "supportsTablet": true,
-      "userInterfaceStyle": "automatic"
+      "bundleIdentifier": "com.predymaster.ComproMillonarios"
     },
-    "name": "masterProyecto",
-    "orientation": "portrait",
-    "slug": "masterProyecto",
-    "splash": {
-      "backgroundColor": "#ffffff",
-      "image": "./assets/splash.png",
-      "resizeMode": "contain"
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.predymaster.ComproMillonarios"
     },
-    "userInterfaceStyle": "light",
-    "version": "1.0.0",
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "notification": {
-      "icon": "./assets/images/notificationIcon.jpg",
-      "color": "#FF0000"
+    "extra": {
+      "eas": {
+        "projectId": "compro-millonarios"
+      }
     }
   }
 }

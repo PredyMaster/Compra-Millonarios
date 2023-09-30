@@ -142,6 +142,10 @@ export const stylesGlobalMaster = () => {
       borderRadius: theme.global.borderRadiusMini,
       fontWeight: "bold",
     },
+
+    cardOnePlayer: {
+      paddingBottom: 40,
+    },
   })
 }
 

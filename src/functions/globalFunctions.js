@@ -19,10 +19,10 @@ export const getProfile = (userID) => {
 }
 
 export const searchUsers = (searchUser) => {
-  //if (searchUser) console.log(searchUser)
-  const yeah = users.find((user) => user.name.includes(searchUser))
+  const matchingUsers = users.filter((user) => {
+    const regex = new RegExp(searchUser, "i") // 'i' para hacer la búsqueda insensible a mayúsculas y minúsculas
+    return regex.test(user.name)
+  })
 
-  //console.log(yeah, " yeah ⚠️⚠️⚠️")
-
-  if (yeah != "undefined") return yeah
+  if (matchingUsers != "undefined") return matchingUsers
 }

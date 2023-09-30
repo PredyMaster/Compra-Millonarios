@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   TextInput,
   Pressable,
+  Keyboard,
 } from "react-native"
 import { stylesGlobalMaster } from "../styles/globalStyle"
 import { styles } from "../styles/componentXStyle"
@@ -20,10 +21,7 @@ import { stylesProfile } from "../styles/componentProfileStyle"
 
 import FooterMenu from "../components/FooterMenu"
 import { searchUsers } from "../functions/globalFunctions"
-
 import { useUser } from "../info/UserContext"
-/* import { CardPlayer } from "./CardPlayer" */
-/* import { CCardPlayer } from "./CardPlayer" */
 import { CardOnePlayer } from "./CardOnePlayer"
 
 const Players = ({ navigation }) => {
@@ -31,18 +29,38 @@ const Players = ({ navigation }) => {
   const globalStyles = stylesGlobalMaster()
   const [text, onChangeText] = useState("")
   const [usersFound, setUsersFound] = useState("")
-  const styles = stylesProfile()
+  const [keyboardVisible, setKeyboardVisible] = useState(true)
 
   useEffect(() => {
     let searchedUsers
     if (text) {
-      //console.log(" entra en if ", text)
       searchedUsers = searchUsers(text)
       setUsersFound(searchedUsers)
     }
+    if (text === "") setUsersFound("")
   }, [text])
 
-  //console.log(usersFound, " usersFound 🧡")
+  useEffect(() => {
+    // Realiza acciones cuando el teclado se muestra
+    const keyboardDidShowListener = Keyboard.addListener(
+      "keyboardDidShow",
+      () => {
+        setKeyboardVisible(false)
+      }
+    )
+
+    // Realiza acciones cuando el teclado se oculta
+    const keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      () => {
+        setKeyboardVisible(true)
+      }
+    )
+    return () => {
+      keyboardDidShowListener.remove()
+      keyboardDidHideListener.remove()
+    }
+  }, [])
 
   return (
     <View
@@ -69,33 +87,13 @@ const Players = ({ navigation }) => {
           />
         </SafeAreaView>
 
-        {/* <Text style={globalStyles.titleInfoContent}>
-          {console.log(usersFound.name, " usersFound.name 💙")}
-        </Text> 
-         */}
-
-        {usersFound !== "" && <CardOnePlayer usersFound={usersFound} />}
-
-        {/*         <View>
-          <View style={styles.infoUserContent}>
-            <Image source={{ uri: usersFound.avatar }} style={styles.avatar} />
-            <View style={styles.infoUserTextContent}>
-              <Text style={styles.infoUserTextName}>{usersFound.name}</Text>
-              <Text style={styles.infoUserTextValue}>
-                Valor usuario{" "}
-                <Text style={styles.boldText}>{usersFound.userValue}</Text>
-              </Text>
-              <Text style={styles.infoUserTextValue}>
-                Monedas <Text style={styles.boldText}>{usersFound.money}</Text>
-              </Text>
-              <Text style={styles.infoUserTextValue}>
-                Diamantes{" "}
-                <Text style={styles.boldText}>{usersFound.diamonds}</Text>
-              </Text>
+        {usersFound !== "" &&
+          usersFound &&
+          usersFound.map((user) => (
+            <View style={globalStyles.cardOnePlayer} key={user.id}>
+              <CardOnePlayer key={user.id} usersFound={user} />
             </View>
-          </View>
-          <Text style={styles.owner}>Propiedad de {usersFound.ownerName}</Text>
-        </View> */}
+          ))}
 
         {/* <View style={globalStyles.infoContent}>
           <Text style={globalStyles.titleInfoContent}>Players</Text>
@@ -120,7 +118,7 @@ const Players = ({ navigation }) => {
         </View> */}
       </ScrollView>
 
-      <FooterMenu {...navigation} />
+      {keyboardVisible && <FooterMenu {...navigation} />}
     </View>
   )
 }

@@ -83,4 +83,34 @@ export const users = [
     ownerColor: 0,
     ownerName: "Sergete",
   },
+
+  {
+    id: "0000-0007",
+    name: "Bikosillito",
+    userValue: 1000,
+    money: 0,
+    diamonds: 0,
+    avatar:
+      "https://mario.nintendo.com/static/75d6ad23ee9360e4dfbee56c8c882e5e/13fb2/waluigi-unstack-closed.png",
+    language: "ESP",
+    darkMode: 0,
+    owner: "0000-0002",
+    ownerColor: 0,
+    ownerName: "Peke",
+  },
+
+  {
+    id: "0000-0008",
+    name: "Bikosillitirito",
+    userValue: 1000,
+    money: 0,
+    diamonds: 0,
+    avatar:
+      "https://mario.nintendo.com/static/1aa760ce66266be8f8c1b0e7a4005d78/13fb2/wario-unstack-closed.png",
+    language: "ESP",
+    darkMode: 0,
+    owner: "0000-0002",
+    ownerColor: 0,
+    ownerName: "Peke",
+  },
 ]
