@@ -8,13 +8,22 @@ export const stylesProfile = () => {
   const owner = user.ownerColor
 
   return StyleSheet.create({
+    boldTextProfile: {
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+      fontWeight: "bold",
+    },
+
     boldText: {
+      color: !dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
       fontWeight: "bold",
     },
 
     infoUserContent: {
       padding: theme.global.padding,
-      paddingBottom: 10,
       flexDirection: "row",
     },
 
@@ -49,6 +58,14 @@ export const stylesProfile = () => {
     },
 
     infoUserTextName: {
+      color: !dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+      fontWeight: "bold",
+      fontSize: 22,
+    },
+
+    infoUserTextNameProfile: {
       color: dark
         ? theme.darkMode.textColorPrimary
         : theme.lightMode.textColorPrimary,
@@ -57,18 +74,32 @@ export const stylesProfile = () => {
     },
 
     infoUserTextValue: {
+      color: !dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+      fontSize: 14,
+    },
+
+    infoUserTextValueProfile: {
       color: dark
         ? theme.darkMode.textColorPrimary
         : theme.lightMode.textColorPrimary,
       fontSize: 14,
     },
 
+    infoUserText: {
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+      fontSize: 14,
+      textAlign: "center",
+    },
+
     owner: {
       textAlign: "center",
       width: "auto",
       alignSelf: "center",
-      backgroundColor: "grey",
-      borderRadius: theme.global.borderRadiusMegaMini,
+      fontSize: 10,
       paddingVertical: 4,
       paddingHorizontal: 10,
       color: dark
@@ -106,6 +137,124 @@ export const stylesProfile = () => {
       marginBottom: 10,
       backgroundColor: "red",
       height: 80,
+    },
+
+    userValueContent: {
+      width: "80%",
+      alignSelf: "center",
+      marginBottom: 10,
+    },
+
+    userValueText: {
+      backgroundColor: theme.colors.mainColor,
+      textAlign: "center",
+      fontSize: 16,
+      paddingVertical: 4,
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+      borderTopLeftRadius: theme.global.borderRadiusMini,
+      borderTopRightRadius: theme.global.borderRadiusMini,
+    },
+    userValueTextBuy: {
+      backgroundColor: theme.colors.constrastColor,
+      textAlign: "center",
+      fontSize: 16,
+      paddingVertical: 4,
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+      borderTopLeftRadius: theme.global.borderRadiusMini,
+      borderTopRightRadius: theme.global.borderRadiusMini,
+    },
+
+    userValueMoney: {
+      backgroundColor: theme.colors.textTertiary,
+      textAlign: "center",
+      fontSize: 36,
+      fontWeight: "bold",
+      color: !dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+    },
+    userMoney: {
+      marginTop: 2,
+      textAlign: "center",
+      fontSize: 10,
+      letterSpacing: 1,
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+    },
+
+    userMoneyPoor: {
+      marginTop: 2,
+      textAlign: "center",
+      fontSize: 10,
+      letterSpacing: 1,
+      color: "red",
+    },
+
+    userValueOwner: {
+      backgroundColor: theme.colors.mainColor,
+      textAlign: "center",
+      fontSize: 10,
+      paddingVertical: 4,
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+      borderBottomLeftRadius: theme.global.borderRadiusMini,
+      borderBottomRightRadius: theme.global.borderRadiusMini,
+    },
+
+    userValueOwnerBuy: {
+      backgroundColor: theme.colors.constrastColor,
+      textAlign: "center",
+      fontSize: 10,
+      paddingVertical: 4,
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+      borderBottomLeftRadius: theme.global.borderRadiusMini,
+      borderBottomRightRadius: theme.global.borderRadiusMini,
+    },
+
+    cardTop: {
+      marginTop: 20,
+      height: 30,
+      backgroundColor: theme.colors.mainColor,
+
+      borderTopLeftRadius: theme.global.borderRadiusMini,
+      borderTopRightRadius: theme.global.borderRadiusMini,
+    },
+    cardContent: {
+      backgroundColor: theme.white.color,
+    },
+    cardBottom: {
+      height: 30,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: theme.colors.mainColor,
+
+      borderBottomLeftRadius: theme.global.borderRadiusMini,
+      borderBottomRightRadius: theme.global.borderRadiusMini,
+    },
+
+    goBack: {
+      marginTop: 20,
+      width: "100%",
+      backgroundColor: theme.colors.textPrimary,
+      borderRadius: theme.global.borderRadiusMini,
+      paddingHorizontal: 5,
+      paddingVertical: 10,
+    },
+
+    goBackText: {
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+      fontSize: 16,
+      textAlign: "center",
     },
   })
 }

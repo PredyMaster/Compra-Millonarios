@@ -1,27 +1,74 @@
-import React, { useEffect, useState } from "react"
-import { View, Text, Image, ScrollView } from "react-native"
+import React, { useEffect, useState, useRef } from "react"
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  Pressable,
+  Alert,
+  TouchableHighlight,
+  TouchableOpacity,
+} from "react-native"
 import { stylesGlobalMaster } from "../styles/globalStyle"
 import { stylesProfile } from "../styles/componentProfileStyle"
 import globalTraductions from "../traductions/globalTraductions"
 import traductions from "../traductions/componentXTraductions"
 import { callApi } from "../functions/globalFunctions"
-import { getMyUsers } from "../functions/globalFunctions"
+import {
+  getMyUsers,
+  getProfile,
+  updateSoldUser,
+} from "../functions/globalFunctions"
 
 import { useUser } from "../info/UserContext"
 
 import UserGallery from "./UserGallery"
 import FooterMenu from "../components/FooterMenu"
+import * as Animatable from "react-native-animatable"
 
-const Profile = ({ navigation }) => {
+const Profile = ({ route, navigation }) => {
   const { user, updateUser } = useUser()
+  const userID = route.params ? route.params.userID : ""
+  const actualUser = userID ? getProfile(userID) : user
   const [myUsers, setMyUsers] = useState([])
   const globalStyles = stylesGlobalMaster()
   const styles = stylesProfile()
 
   useEffect(() => {
-    const myUsersSearch = getMyUsers(user.id)
-    setMyUsers(myUsersSearch)
-  }, [])
+    if (actualUser) setMyUsers(getMyUsers(actualUser.id))
+  }, [actualUser])
+
+  const buyUser = () => {
+    if (user.id !== actualUser.owner) {
+      if (user.money >= actualUser.userValue) {
+        const pay = actualUser.userValue + 500
+
+        const pastBuyer = getProfile(actualUser.owner)
+        const soldUser = {
+          ...actualUser,
+          owner: user.id,
+          ownerName: user.name,
+          userValue: user.userValue + 500,
+        }
+        const buyerUser = { ...user, money: user.money - pay }
+        const pastBuyerUpdated = { ...pastBuyer, money: pastBuyer.money + pay }
+
+        updateSoldUser(soldUser, buyerUser, pastBuyerUpdated)
+        updateUser({ ...buyerUser, money: buyerUser.money })
+      } else {
+        Alert.alert("No tienes dinero")
+      }
+    }
+  }
+
+  const estoyComprado = (user, actualUser) => {
+    let valueUser
+    user.id === actualUser.owner
+      ? (valueUser = "COMPRADO")
+      : (valueUser = actualUser.userValue + 500)
+
+    return valueUser
+  }
 
   return (
     <View
@@ -38,135 +85,96 @@ const Profile = ({ navigation }) => {
         </View>
 
         <View style={styles.infoUserContent}>
-          <Image source={{ uri: user.avatar }} style={styles.avatar} />
+          <Image source={{ uri: actualUser.avatar }} style={styles.avatar} />
           <View style={styles.infoUserTextContent}>
-            <Text style={styles.infoUserTextName}>{user.name}</Text>
-            <Text style={styles.infoUserTextValue}>
-              Valor usuario{" "}
-              <Text style={styles.boldText}>{user.userValue}</Text>
+            <Text style={styles.infoUserTextNameProfile}>
+              {actualUser.name}
             </Text>
-            <Text style={styles.infoUserTextValue}>
-              Monedas <Text style={styles.boldText}>{user.money}</Text>
+
+            {!userID && (
+              <View>
+                <Text style={styles.infoUserTextValueProfile}>
+                  Valor usuario{" "}
+                  <Text style={styles.boldTextProfile}>
+                    {actualUser.userValue}
+                  </Text>
+                </Text>
+              </View>
+            )}
+            <Text style={styles.infoUserTextValueProfile}>
+              Monedas{" "}
+              <Text style={styles.boldTextProfile}>{actualUser.money}</Text>
             </Text>
-            <Text style={styles.infoUserTextValue}>
-              Diamantes <Text style={styles.boldText}>{user.diamonds}</Text>
+            <Text style={styles.infoUserTextValueProfile}>
+              Diamantes{" "}
+              <Text style={styles.boldTextProfile}>{actualUser.diamonds}</Text>
             </Text>
           </View>
         </View>
 
-        {/*         <View>
-          <Text>Personas que tengo compradas:</Text>
-          {myUsers &&
-            myUsers.map((item) => {
-              console.log(item, " el item")
-              return (
-                <Text key={item.id} style={styles.infoUserTextValue}>
-                  {item.name}
-                </Text>
-              )
-            })}
-          <Text></Text>
-        </View> */}
+        {userID && userID != user.id && (
+          <View style={styles.userValueContent}>
+            <Text
+              style={
+                estoyComprado(user, actualUser) === "COMPRADO"
+                  ? styles.userValueTextBuy
+                  : styles.userValueText
+              }
+            >
+              Precio Usuario:
+            </Text>
+            <Text style={styles.userValueMoney}>
+              {estoyComprado(user, actualUser)}
+            </Text>
+            <Text
+              style={
+                estoyComprado(user, actualUser) === "COMPRADO"
+                  ? styles.userValueOwnerBuy
+                  : styles.userValueOwner
+              }
+            >
+              Comprado por {actualUser.ownerName}
+            </Text>
+          </View>
+        )}
 
         <View style={stylesProfile.UserGalleryComponent}>
-          <Text style={styles.infoUserTextValue}>
-            Personas que tengo compradas:
+          <Text style={styles.infoUserText}>
+            {userID
+              ? "Personas que tiene compradas"
+              : "Personas que tengo compradas"}
           </Text>
-          <UserGallery myUsers={myUsers} navigation={navigation} />
-          {/* {myUsers.length && <UserGallery myUsers={myUsers} />} */}
+          <UserGallery
+            myUsers={myUsers}
+            navigation={navigation}
+            userID={actualUser.id}
+          />
         </View>
 
-        {/*         <View style={styles.sectionContent}>
+        {userID && actualUser.owner != user.id && (
           <View>
-            <Text>Si te tienes en posesion o te han comprado</Text>
+            <Pressable onPress={() => buyUser()}>
+              <>
+                <View style={globalStyles.buttonTextMixtButton}>
+                  <Text style={globalStyles.buttonTextMixt}>
+                    Comprar Usuario
+                  </Text>
+                </View>
+                <View style={globalStyles.buttonTextMixtValue}>
+                  <Text
+                    style={
+                      user.money >= actualUser.userValue
+                        ? styles.userMoney
+                        : styles.userMoneyPoor
+                    }
+                  >
+                    [ Mi dinero: {user.money} ]
+                  </Text>
+                </View>
+              </>
+            </Pressable>
           </View>
-
-          <View>
-            <Text>Lista de usuarios que has comprado</Text>
-          </View>
-        </View>
-
-        <View style={styles.sectionContent}>
-          <View>
-            <Text>Cantidad de materiales que tienes oro/plata/bronce</Text>
-          </View>
-
-          <View>
-            <Text>Los negocios que te has comprado</Text>
-          </View>
-
-          <View>
-            <Text>Las criptomonedas invertidas</Text>
-          </View>
-        </View>
-
-        <View style={styles.sectionContent}>
-          <View>
-            <Text>
-              Numero de hangares, garajes, puertos // coches, aviones, barcos
-            </Text>
-            <Text>Numero de casas, edificios, islas, monumentos</Text>
-            <Text>Numero de cuadros, museos, NFTS</Text>
-          </View>
-        </View>
-
-        <View style={styles.sectionContent}>
-          <View>
-            <Text>
-              Links para compartir tu perfil del juego en redes sociales
-            </Text>
-          </View>
-        </View> */}
-
-        {/*         <View style={globalStyles.infoContent}>
-          <Text style={globalStyles.titleInfoContent}>Profile</Text>
-          <Text style={globalStyles.textInfoContent}>
-            - Tu foto y tu nombre (Hay que controlar que la peña no suba fotos
-            de pollas o cosas raras, poner un filtro de subida en las imagenes?)
-          </Text>
-
-          <Text style={globalStyles.textInfoContent}>
-            - Sales si has comprado a otros jugadores (y sale la foto de los
-            jugadores), el valor del jugador es 1000 euros, y cada vez que
-            compran al jugador se revaloriza 500€{" "}
-          </Text>
-
-          <Text style={globalStyles.textInfoContent}>
-            - Cantidad de moneda especial del juego (Mcoins){" "}
-          </Text>
-
-          <Text style={globalStyles.textInfoContent}>
-            - Balance total Sale quien te ha comprado Barra de grafico con la
-            cantidad de dinero que tienes en cada sección de abajo
-          </Text>
-
-          <Text style={globalStyles.textInfoContent}>
-            - Estadisticas de cuanto dinero has generado en (Inversiones,
-            negocios..){" "}
-          </Text>
-
-          <Text style={globalStyles.textInfoContent}>- Negocios</Text>
-
-          <Text style={globalStyles.textInfoContent}>- Inversiones</Text>
-
-          <Text style={globalStyles.textInfoContent}>
-            - Dinero en Coleccionables
-          </Text>
-
-          <Text style={globalStyles.textInfoContent}>
-            - Compartir en redes sociales{" "}
-          </Text>
-
-          <Text style={globalStyles.textInfoContent}>
-            - Te sale la cantidad de dinero que te ha donado otro usuario y
-            puedes ver la lista // puedes dejar que se vea en tu perfil o
-            desactivarlo desde opciones{" "}
-          </Text>
-
-          <Text style={globalStyles.textInfoContent}>
-            - En tu cuenta tambien salen tus hangares, garajes, puertos etc
-          </Text>
-        </View> */}
+        )}
       </ScrollView>
 
       <FooterMenu {...navigation} />

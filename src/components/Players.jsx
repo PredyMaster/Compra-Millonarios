@@ -91,7 +91,12 @@ const Players = ({ navigation }) => {
           usersFound &&
           usersFound.map((user) => (
             <View style={globalStyles.cardOnePlayer} key={user.id}>
-              <CardOnePlayer key={user.id} usersFound={user} />
+              <CardOnePlayer
+                key={user.id}
+                usersFound={user}
+                navigation={navigation}
+                search={text}
+              />
             </View>
           ))}
 

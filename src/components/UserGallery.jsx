@@ -7,11 +7,17 @@ import {
   StyleSheet,
   ScrollView,
 } from "react-native"
+import { useUser } from "../info/UserContext"
+import theme from "../styles/theme"
 
-const UserGalleryCard = ({ user, navigation }) => {
+const UserGalleryCard = ({ user, navigation, userID, dark }) => {
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("Money", { name: "Predy" })} // <-------------------------------------------------------- Aquí está la ruta
+      onPress={() =>
+        navigation.navigate("Profile", {
+          userID: userID,
+        })
+      } // <-------------------------------------------------------- Aquí está la ruta
       style={styles.userGalleryCard}
     >
       <Image style={styles.miniAvatar} source={{ uri: user.avatar }} />
@@ -21,15 +27,25 @@ const UserGalleryCard = ({ user, navigation }) => {
 }
 
 const UserGallery = ({ myUsers, navigation }) => {
-  return (
+  const { user } = useUser()
+  const dark = user.darkMode
+
+  /*   console.log("Render UserGallery", myUsers)
+   */ return (
     <ScrollView contentContainerStyle={styles.userGalleryCardContainer}>
-      {myUsers.map((user) => (
-        <UserGalleryCard key={user.id} user={user} navigation={navigation} />
-      ))}
+      {myUsers &&
+        myUsers.map((user) => (
+          <UserGalleryCard
+            key={user.id}
+            user={user}
+            userID={user.id}
+            dark={dark}
+            navigation={navigation}
+          />
+        ))}
     </ScrollView>
   )
 }
-
 const styles = StyleSheet.create({
   userGalleryCardContainer: {
     flexDirection: "row",

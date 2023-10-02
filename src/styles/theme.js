@@ -13,6 +13,8 @@ const theme = {
     textTertiary: "ghostwhite", //Gris clarito azulado
     textQuaternary: "green",
     primary: "#0366d6",
+    mainColor: "#317C77",
+    constrastColor: "#F6AD27",
   },
   textColor: {
     Primary: "#363636", //Gris oscuro

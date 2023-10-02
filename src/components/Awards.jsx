@@ -1,3 +1,4 @@
+import React, { useEffect } from "react"
 import { View, Text, ScrollView } from "react-native"
 import { stylesGlobalMaster } from "../styles/globalStyle"
 import { styles } from "../styles/componentXStyle"
@@ -7,6 +8,11 @@ import { callApi } from "../functions/globalFunctions"
 import { AdFooter } from "../ads/adSection"
 import Menu from "./Menu"
 
+import {
+  getRankingMoney,
+  getRankingUserValue,
+} from "../functions/globalFunctions"
+
 import FooterMenu from "../components/FooterMenu"
 
 import { useUser } from "../info/UserContext"
@@ -14,6 +20,12 @@ import { useUser } from "../info/UserContext"
 const Awards = ({ navigation }) => {
   const { user, updateUser } = useUser()
   const globalStyles = stylesGlobalMaster()
+
+  useEffect(() => {
+    getRankingMoney()
+
+    getRankingUserValue()
+  }, [])
 
   return (
     <View

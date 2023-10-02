@@ -35,3 +35,44 @@ export const getMyUsers = (miUserID) => {
 
   if (matchingUsers != "undefined") return matchingUsers
 }
+
+export const getRankingMoney = () => {
+  const allUsersSorted = users.toSorted((a, b) => b.money - a.money)
+  const top10UsersWithMostMoney = allUsersSorted.slice(0, 10)
+
+  return top10UsersWithMostMoney
+}
+
+export const getRankingUserValue = () => {
+  const allUsersSorted = users.toSorted((a, b) => b.userValue - a.userValue)
+
+  console.log("allUsersSorted", allUsersSorted)
+  const top10UsersWithMostUserValue = allUsersSorted.slice(0, 10)
+}
+
+export const updateSoldUser = (soldUser, buyerUser, pastBuyerUpdated) => {
+  let soldUserBD = users.find((user) => user.id === soldUser.id)
+  let buyerUserBD = users.find((user) => user.id === buyerUser.id)
+  let pastBuyerUpdatedBD = users.find((user) => user.id === pastBuyerUpdated.id)
+
+  soldUserBD.money = soldUser.money
+  soldUserBD.userValue = soldUser.userValue
+  soldUserBD.owner = soldUser.owner
+  soldUserBD.ownerName = soldUser.ownerName
+
+  buyerUserBD.money = buyerUser.money
+
+  pastBuyerUpdatedBD.money = pastBuyerUpdated.money
+
+  console.log(soldUserBD, " soldUserBD")
+  console.log(buyerUserBD, " buyerUserBD")
+  console.log(pastBuyerUpdatedBD, " pastBuyerUpdatedBD")
+
+  console.log(users, " users 🧡🧡🧡🧡🧡🧡🧡🧡🧡🧡🧡")
+
+  /* soldUserBD.money = soldUser.money
+  buyerUserBD = buyerUser
+  pastBuyerUpdatedBD = pastBuyerUpdated */
+
+  return "yeah"
+}

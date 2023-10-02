@@ -143,8 +143,60 @@ export const stylesGlobalMaster = () => {
       fontWeight: "bold",
     },
 
-    cardOnePlayer: {
-      paddingBottom: 40,
+    button: {
+      backgroundColor: theme.colors.mainColor,
+      width: "auto",
+      alignSelf: "center",
+      justifyContent: "center",
+      padding: 20,
+      paddingHorizontal: 40,
+      borderRadius: theme.global.borderRadius,
+      textTransform: "uppercase",
+    },
+
+    buttonText: {
+      fontSize: 20,
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+    },
+
+    buttonTextMixtButton: {
+      backgroundColor: theme.colors.mainColor,
+      padding: 20,
+      paddingHorizontal: 40,
+      alignSelf: "center",
+      width: "auto",
+      borderTopLeftRadius: theme.global.borderRadiusMini,
+      borderTopRightRadius: theme.global.borderRadiusMini,
+      width: "80%",
+    },
+
+    buttonTextMixt: {
+      justifyContent: "center",
+      textTransform: "uppercase",
+      textAlign: "center",
+      fontSize: 20,
+      fontWeight: "bold",
+    },
+
+    buttonTextMixtValue: {
+      width: "80%",
+      alignSelf: "center",
+      paddingVertical: 6,
+      backgroundColor: dark
+        ? theme.darkMode.colorBackground
+        : theme.lightMode.colorBackground,
+
+      borderBottomLeftRadius: theme.global.borderRadiusMini,
+      borderBottomRightRadius: theme.global.borderRadiusMini,
+    },
+
+    buttonTextValue: {
+      fontSize: 20,
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
     },
   })
 }

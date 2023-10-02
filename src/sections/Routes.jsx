@@ -13,6 +13,7 @@ import Awards from "../components/Awards"
 import Config from "../components/Config"
 import Help from "../components/Help"
 import Store from "../components/Store"
+import UserGallery from "../components/UserGallery"
 
 const Tab = createNativeStackNavigator()
 
@@ -20,11 +21,9 @@ export default function Routes() {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{ animation: "none" }}>
-        <Tab.Screen
-          name="Profile"
-          options={{ headerShown: false }}
-          component={Profile}
-        />
+        <Tab.Screen name="Profile" options={{ headerShown: false }}>
+          {(props) => <Profile {...props} goBack="Profile" search="" />}
+        </Tab.Screen>
         <Tab.Screen
           name="Art"
           options={{ headerShown: false }}
@@ -74,6 +73,11 @@ export default function Routes() {
           name="Store"
           options={{ headerShown: false }}
           component={Store}
+        />
+        <Tab.Screen
+          name="UserGallery"
+          options={{ headerShown: false }}
+          component={UserGallery}
         />
       </Tab.Navigator>
     </NavigationContainer>
