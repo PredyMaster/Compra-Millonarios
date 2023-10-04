@@ -4,7 +4,7 @@ export default ({ config }) => {
     name: process.env.APP_NAME || "Compro Millonarios",
     extra: {
       eas: {
-        projectId: "compra-millonarios",
+        projectId: "e3c2f82c-2cb0-46cd-a190-6c4cad1cc21f",
       },
       android: {
         package: "com.ComproMillonarios",

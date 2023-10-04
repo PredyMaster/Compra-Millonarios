@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Compra Millonarios",
-    "slug": "compra-millonarios",
+    "slug": "e3c2f82c-2cb0-46cd-a190-6c4cad1cc21f",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -28,7 +28,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "compra-millonarios"
+        "projectId": "e3c2f82c-2cb0-46cd-a190-6c4cad1cc21f"
       }
     }
   }
