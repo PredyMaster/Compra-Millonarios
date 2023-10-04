@@ -72,10 +72,6 @@ const Players = ({ navigation }) => {
       ]}
     >
       <ScrollView style={globalStyles.topScreen}>
-        <View style={globalStyles.contentPrueba}>
-          <Text>Submenu componente</Text>
-        </View>
-
         <Text style={globalStyles.labelSearch}>Encuentra al usuario</Text>
         <SafeAreaView>
           <TextInput

@@ -25,10 +25,6 @@ const Investments = ({ navigation }) => {
       ]}
     >
       <ScrollView style={globalStyles.topScreen}>
-        <View style={globalStyles.contentPrueba}>
-          <Text>Submenu componente</Text>
-        </View>
-
         <View style={globalStyles.infoContent}>
           <Text style={globalStyles.titleInfoContent}>Investments</Text>
           <Text style={globalStyles.textInfoContent}>

@@ -1,14 +1,5 @@
 import React, { useEffect, useState, useRef } from "react"
-import {
-  View,
-  Text,
-  Image,
-  ScrollView,
-  Pressable,
-  Alert,
-  TouchableHighlight,
-  TouchableOpacity,
-} from "react-native"
+import { View, Text, Image, ScrollView, Pressable, Alert } from "react-native"
 import { stylesGlobalMaster } from "../styles/globalStyle"
 import { stylesProfile } from "../styles/componentProfileStyle"
 import globalTraductions from "../traductions/globalTraductions"
@@ -24,11 +15,10 @@ import { useUser } from "../info/UserContext"
 
 import UserGallery from "./UserGallery"
 import FooterMenu from "../components/FooterMenu"
-import * as Animatable from "react-native-animatable"
 
 const Profile = ({ route, navigation }) => {
   const { user, updateUser } = useUser()
-  const userID = route.params ? route.params.userID : ""
+  const userID = route.params?.userID ? route.params.userID : ""
   const actualUser = userID ? getProfile(userID) : user
   const [myUsers, setMyUsers] = useState([])
   const globalStyles = stylesGlobalMaster()
@@ -70,6 +60,10 @@ const Profile = ({ route, navigation }) => {
     return valueUser
   }
 
+  const createBuyUserButton = () => {
+    return <></>
+  }
+
   return (
     <View
       style={[
@@ -80,10 +74,6 @@ const Profile = ({ route, navigation }) => {
       ]}
     >
       <ScrollView style={globalStyles.topScreen}>
-        <View style={globalStyles.contentPrueba}>
-          <Text>Submenu componente</Text>
-        </View>
-
         <View style={styles.infoUserContent}>
           <Image source={{ uri: actualUser.avatar }} style={styles.avatar} />
           <View style={styles.infoUserTextContent}>
@@ -112,7 +102,7 @@ const Profile = ({ route, navigation }) => {
           </View>
         </View>
 
-        {userID && userID != user.id && (
+        {userID != "" && userID != user.id && (
           <View style={styles.userValueContent}>
             <Text
               style={
@@ -138,7 +128,7 @@ const Profile = ({ route, navigation }) => {
           </View>
         )}
 
-        <View style={stylesProfile.UserGalleryComponent}>
+        <View>
           <Text style={styles.infoUserText}>
             {userID
               ? "Personas que tiene compradas"
@@ -151,7 +141,7 @@ const Profile = ({ route, navigation }) => {
           />
         </View>
 
-        {userID && actualUser.owner != user.id && (
+        {userID != "" && actualUser.owner != user.id && (
           <View>
             <Pressable onPress={() => buyUser()}>
               <>

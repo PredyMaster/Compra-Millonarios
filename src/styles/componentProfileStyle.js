@@ -23,8 +23,9 @@ export const stylesProfile = () => {
     },
 
     infoUserContent: {
-      padding: theme.global.padding,
+      //padding: theme.global.padding,
       flexDirection: "row",
+      marginBottom: theme.global.margin,
     },
 
     avatar: {
@@ -35,6 +36,7 @@ export const stylesProfile = () => {
         ? theme.darkMode.textColorPrimary
         : theme.lightMode.textColorPrimary,
       borderRadius: theme.global.borderRadiusMini,
+      borderColor: theme.generic.mainColor,
       /* borderColor:
         owner === 0
           ? dark
@@ -131,14 +133,6 @@ export const stylesProfile = () => {
       marginVertical: 10,
     },
 
-    UserGalleryComponent: {
-      flexDirection: "row",
-      alignItems: "center",
-      marginBottom: 10,
-      backgroundColor: "red",
-      height: 80,
-    },
-
     userValueContent: {
       width: "80%",
       alignSelf: "center",
@@ -169,7 +163,9 @@ export const stylesProfile = () => {
     },
 
     userValueMoney: {
-      backgroundColor: theme.colors.textTertiary,
+      backgroundColor: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
       textAlign: "center",
       fontSize: 36,
       fontWeight: "bold",
@@ -228,7 +224,7 @@ export const stylesProfile = () => {
       borderTopRightRadius: theme.global.borderRadiusMini,
     },
     cardContent: {
-      backgroundColor: theme.white.color,
+      backgroundColor: "white",
     },
     cardBottom: {
       height: 30,

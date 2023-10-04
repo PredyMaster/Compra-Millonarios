@@ -37,17 +37,22 @@ export const getMyUsers = (miUserID) => {
 }
 
 export const getRankingMoney = () => {
-  const allUsersSorted = users.toSorted((a, b) => b.money - a.money)
+  const usersArray = Object.values(users)
+  const allUsersSorted = usersArray.sort((a, b) => b.money - a.money)
+
   const top10UsersWithMostMoney = allUsersSorted.slice(0, 10)
 
   return top10UsersWithMostMoney
 }
 
 export const getRankingUserValue = () => {
-  const allUsersSorted = users.toSorted((a, b) => b.userValue - a.userValue)
+  const usersArray = Object.values(users)
+  const allUsersSorted = usersArray.sort((a, b) => b.userValue - a.userValue)
 
   console.log("allUsersSorted", allUsersSorted)
   const top10UsersWithMostUserValue = allUsersSorted.slice(0, 10)
+
+  return top10UsersWithMostUserValue
 }
 
 export const updateSoldUser = (soldUser, buyerUser, pastBuyerUpdated) => {

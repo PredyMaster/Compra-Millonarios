@@ -8,6 +8,21 @@ export const stylesGlobalMaster = () => {
   const dark = user.darkMode
 
   return StyleSheet.create({
+    fullScreen: {
+      flex: 1,
+      marginTop: Constants.statusBarHeight,
+      position: "relative",
+    },
+    topScreen: {
+      flex: 1,
+      padding: theme.global.paddingMax,
+    },
+
+    bottomScreen: {
+      bottom: 0,
+      width: "100%",
+      position: "fixed",
+    },
     menu: {
       backgroundColor: "purple",
     },
@@ -33,25 +48,28 @@ export const stylesGlobalMaster = () => {
       color: "white",
     },
 
-    contentPrueba: {
-      marginTop: theme.global.margin,
-      padding: theme.global.padding,
-      backgroundColor: theme.backgrounds.Primary,
-      minHeight: "auto",
-      borderRadius: theme.global.borderRadius,
-    },
-
     infoContent: {
       justifyContent: "center",
       padding: theme.global.padding,
-      backgroundColor: theme.backgrounds.Secondary,
+      //backgroundColor: theme.backgrounds.Secondary,
+      backgroundColor: "red",
+      borderRadius: theme.global.borderRadius,
+    },
+
+    backContent: {
+      justifyContent: "center",
+      padding: theme.global.padding,
+      /*      backgroundColor: dark
+        ? theme.darkMode.colorBackgroundInverse
+        : theme.lightMode.colorBackgroundInverse, */
+      backgroundColor: theme.generic.lightGreyColor,
       borderRadius: theme.global.borderRadius,
     },
 
     titleInfoContent: {
       fontSize: 25,
       fontWeight: "bold",
-      color: theme.textColor.Secondary,
+      //color: theme.textColor.Secondary,
       marginBottom: 15,
     },
 
@@ -62,7 +80,19 @@ export const stylesGlobalMaster = () => {
 
     text: {
       fontSize: 10,
-      color: theme.textColor.Primary,
+      //color: theme.textColor.Primary,
+    },
+
+    normalLabel: {
+      color: dark
+        ? theme.darkMode.textColorPrimary
+        : theme.lightMode.textColorPrimary,
+    },
+
+    invertLabel: {
+      color: dark
+        ? theme.darkMode.textColorInverse
+        : theme.lightMode.textColorInverse,
     },
 
     pink: { backgroundColor: "#ff00e6" },
@@ -71,23 +101,6 @@ export const stylesGlobalMaster = () => {
     purple: { backgroundColor: "#9747ff" },
     yellow: { backgroundColor: "#ffcd29" },
     blue: { backgroundColor: "#0d99ff" },
-
-    fullScreen: {
-      flex: 1,
-      marginTop: Constants.statusBarHeight,
-    },
-    topScreen: {
-      flex: 0.68,
-      padding: 10,
-    },
-
-    bottomScreen: {
-      flex: 0.32,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      position: "fixed",
-    },
 
     darkmodeContent: {
       backgroundColor: "#383838",
@@ -197,6 +210,11 @@ export const stylesGlobalMaster = () => {
       color: dark
         ? theme.darkMode.textColorPrimary
         : theme.lightMode.textColorPrimary,
+    },
+
+    filled: {
+      width: "100%",
+      height: 40,
     },
   })
 }

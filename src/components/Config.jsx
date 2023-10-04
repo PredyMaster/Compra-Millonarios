@@ -1,14 +1,7 @@
 import React, { useState } from "react"
-import {
-  View,
-  Text,
-  ScrollView,
-  Switch,
-  Modal,
-  TouchableOpacity,
-} from "react-native"
+import { View, Text, ScrollView, Switch, Modal, Pressable } from "react-native"
 import { stylesGlobalMaster } from "../styles/globalStyle"
-import { styles } from "../styles/componentConfigStyle"
+import { stylesConfig } from "../styles/componentConfigStyle"
 import globalTraductions from "../traductions/globalTraductions"
 import traductions from "../traductions/componentXTraductions"
 import { callApi } from "../functions/globalFunctions"
@@ -24,6 +17,7 @@ const Config = ({ navigation }) => {
   const globalStyles = stylesGlobalMaster()
   const [isActiveDarkmode, setActiveDarkmode] = useState(!!user.darkMode)
   const [isDropdownVisible, setIsDropdownVisible] = useState(false)
+  const styles = stylesConfig()
   const words = ["ESP", "ENG", "CAT"]
 
   const toggleDropdown = () => {
@@ -50,15 +44,13 @@ const Config = ({ navigation }) => {
       ]}
     >
       <ScrollView style={globalStyles.topScreen}>
-        <View style={globalStyles.contentPrueba}>
-          <Text>Submenu componente</Text>
-        </View>
-
-        <View style={globalStyles.infoContent}>
+        <View style={globalStyles.backContent}>
           <Text style={globalStyles.titleInfoContent}>Config</Text>
 
           <View style={styles.optionContent}>
-            <Text>Activar/Desactivar DarkMode:</Text>
+            <Text style={globalStyles.invertLabel}>
+              Activar/Desactivar DarkMode:
+            </Text>
             <Switch
               trackColor={{ false: "#767577", true: "#81b0ff" }}
               thumbColor={isActiveDarkmode ? "#00ddfd" : "#cccccc"}
@@ -72,13 +64,12 @@ const Config = ({ navigation }) => {
 
           <View style={styles.optionContent}>
             <View style={styles.container}>
-              <Text style={styles.labelDropdown}>Selecciona tu idioma:</Text>
-              <TouchableOpacity
-                onPress={toggleDropdown}
-                style={styles.dropdownButton}
-              >
+              <Text style={globalStyles.invertLabel}>
+                Selecciona tu idioma:
+              </Text>
+              <Pressable onPress={toggleDropdown} style={styles.dropdownButton}>
                 <Text>{user.language || "Idioma"}</Text>
-              </TouchableOpacity>
+              </Pressable>
               <Modal
                 visible={isDropdownVisible}
                 transparent={true}
@@ -87,13 +78,13 @@ const Config = ({ navigation }) => {
               >
                 <View style={globalStyles.modal}>
                   {words.map((word, index) => (
-                    <TouchableOpacity
+                    <Pressable
                       key={index}
                       onPress={() => handleDropdownSelect(word)}
                       style={globalStyles.modalItem}
                     >
                       <Text style={globalStyles.modalOptions}>{word}</Text>
-                    </TouchableOpacity>
+                    </Pressable>
                   ))}
                 </View>
               </Modal>

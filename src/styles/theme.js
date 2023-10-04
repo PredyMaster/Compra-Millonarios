@@ -1,6 +1,9 @@
 const theme = {
   global: {
-    margin: 10,
+    marginMax: 30,
+    margin: 20,
+    marginMini: 10,
+    paddingMax: 30,
     padding: 20,
     paddingMini: 10,
     borderRadius: 12,
@@ -12,11 +15,18 @@ const theme = {
     textSecondary: "#09f", //Azul colorido
     textTertiary: "ghostwhite", //Gris clarito azulado
     textQuaternary: "green",
-    primary: "#0366d6",
-    mainColor: "#317C77",
-    constrastColor: "#F6AD27",
+    primary: "#0366d6", //Azul Oscuro
+    mainColor: "#317C77", //Turquesa Logo
+    constrastColor: "#F6AD27", // Naranja, contrasta con el color del logo
   },
-  textColor: {
+
+  generic: {
+    mainColor: "#317C77", //Turquesa Logo
+    constrastColor: "#F6AD27", // Naranja, contrasta con el color del logo
+    lightGreyColor: "lightgray",
+  },
+
+  /* textColor: {
     Primary: "#363636", //Gris oscuro
     Secondary: "#0b0b0b", //Gris MUY oscuro
     red: "#da0000", //Rojo
@@ -38,12 +48,15 @@ const theme = {
   },
   white: {
     color: "white",
-  },
+  }, */
 
   darkMode: {
     textColorPrimary: "white",
     textColorSecundary: "ghostwhite", //Gris clarito azulado
+    textColorInverse: "#24292e",
     colorBackground: "#24292e", //Gris oscuro
+    colorBackgroundInverse: "lightgray",
+
     green: "green",
     red: "red",
     yellow: "yellow",
@@ -52,7 +65,10 @@ const theme = {
   lightMode: {
     textColorPrimary: "#24292e", //Gris oscuro
     textColorSecundary: "black", // Negro
-    colorBackground: "#lightgray", //Gris claito
+    textColorInverse: "lightgray", //Gris clarito
+    colorBackground: "lightgray", //Gris clarito
+    colorBackgroundInverse: "#24292e", //Gris oscuro
+
     green: "green",
     red: "red",
     yellow: "yellow",

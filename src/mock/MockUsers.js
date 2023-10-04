@@ -73,7 +73,7 @@ export const users = [
     id: "0000-0006",
     name: "Bikosillo",
     userValue: 1000,
-    money: 0,
+    money: 10000,
     diamonds: 0,
     avatar:
       "https://mario.nintendo.com/static/d5e5d97d061a0412d4299c4b2d1570a4/13fb2/bowser-unstack-closed.png",

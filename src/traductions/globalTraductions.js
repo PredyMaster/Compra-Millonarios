@@ -69,6 +69,12 @@ const traducciones = {
     ENG: "Store",
     CAT: "Botiga",
   },
+
+  Secciones: {
+    ESP: "Secciones",
+    ENG: "Secciones",
+    CAT: "Secciones",
+  },
 }
 
 export default globalTraductions

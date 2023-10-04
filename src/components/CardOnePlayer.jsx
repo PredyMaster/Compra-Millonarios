@@ -1,5 +1,5 @@
 import React from "react"
-import { View, Image, Text, TouchableOpacity } from "react-native"
+import { View, Image, Text, Pressable } from "react-native"
 import { stylesProfile } from "../styles/componentProfileStyle"
 
 export const CardOnePlayer = ({ usersFound, navigation, search }) => {
@@ -8,7 +8,7 @@ export const CardOnePlayer = ({ usersFound, navigation, search }) => {
     const styles = stylesProfile()
     if (usersFound != undefined) {
       return (
-        <TouchableOpacity
+        <Pressable
           onPress={() =>
             navigation.navigate("Profile", {
               userID: usersFound.id,
@@ -57,7 +57,7 @@ export const CardOnePlayer = ({ usersFound, navigation, search }) => {
               Comprar por {usersFound.userValue + 500}
             </Text>
           </Pressable> */}
-        </TouchableOpacity>
+        </Pressable>
       )
     }
   }

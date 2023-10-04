@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native"
 import { useUser } from "../info/UserContext"
+import theme from "./theme"
 
 export const stylesHelp = () => {
   const { user } = useUser()

@@ -13,6 +13,7 @@ import Awards from "../components/Awards"
 import Config from "../components/Config"
 import Help from "../components/Help"
 import Store from "../components/Store"
+import Sections from "../components/Sections"
 import UserGallery from "../components/UserGallery"
 
 const Tab = createNativeStackNavigator()
@@ -75,9 +76,9 @@ export default function Routes() {
           component={Store}
         />
         <Tab.Screen
-          name="UserGallery"
+          name="Sections"
           options={{ headerShown: false }}
-          component={UserGallery}
+          component={Sections}
         />
       </Tab.Navigator>
     </NavigationContainer>
